@@ -24,10 +24,9 @@ You can use NPM or Yarn to install:
 
 Import and create a solver:
 
-    import {Solver} from 'amoebajs'
-    // Alternatively: Solver = require('amoebajs/dist/amoebajs_node.js').Solver
+    let amoeba = require('amoebajs/node')
 
-    let solver = new Solver()
+    let solver = new amoeba.Solver()
 
 Set up variables:
 
