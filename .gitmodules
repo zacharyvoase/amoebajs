@@ -1,0 +1,3 @@
+[submodule "amoeba"]
+	path = amoeba
+	url = https://github.com/starwing/amoeba.git
