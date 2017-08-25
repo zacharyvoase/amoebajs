@@ -1,0 +1,20 @@
+{
+  "name": "amoebajs",
+  "version": "0.0.1",
+  "author": "Zack Voase <zack@meat.io>",
+  "description": "A JS/WebAssembly binding for the Amoeba C++ linear constraint solver",
+  "homepage": "https://github.com/zacharyvoase/amoebajs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zacharyvoase/amoebajs.git"
+  },
+  "license": "Unlicense",
+  "main": "index.js",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "llvmbc-wasm-loader": "^0.0.1",
+    "webpack": "^3.5.5"
+  }
+}
