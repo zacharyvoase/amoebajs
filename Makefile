@@ -4,7 +4,7 @@ CXXFLAGS=-std=c++11 --bind -Iamoeba -DAM_API='extern __attribute__((used))' -DAM
 dist/amoebajs_node.js dist/amoebajs_web.js: lib/amoebalib.bc lib/index.js
 	webpack
 
-lib/amoebalib.bc: lib/amoebalib.cpp
+lib/amoebalib.bc: lib/amoebalib.cpp amoeba/amoeba.h
 	${CXX} ${CXXFLAGS} lib/amoebalib.cpp -o lib/amoebalib.bc
 
 clean:
