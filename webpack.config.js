@@ -1,6 +1,19 @@
-path = require('path')
+const path = require('path')
 
-var nodeTarget = {
+const rules = [
+    { test: /\.bc$/, use: 'llvmbc-wasm-loader' },
+    {
+        test: /\.js$/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['env']
+            }
+        }
+    }
+]
+
+const nodeTarget = {
     target: 'node',
     entry: './lib/index.js',
     output: {
@@ -10,46 +23,23 @@ var nodeTarget = {
         filename: 'amoebajs_node.js'
     },
     module: {
-        rules: [
-            { test: /\.bc$/, use: 'llvmbc-wasm-loader' },
-            {
-                test: /\.js$/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
-                    }
-                }
-            }
-        ]
+        rules: rules
     }
-};
+}
 
-var webTarget = {
+const webTarget = {
     target: 'web',
     entry: './lib/index.js',
     output: {
         library: 'amoeba',
-        libraryTarget: 'window',
+        libraryTarget: 'umd',
         path: path.resolve(__dirname, 'dist'),
         filename: 'amoebajs_web.js'
     },
     module: {
-        rules: [
-            { test: /\.bc$/, use: 'llvmbc-wasm-loader' },
-            {
-                test: /\.js$/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
-                    }
-                }
-            }
-        ]
+        rules: rules
     },
     externals: ['fs', 'path']
-};
+}
 
-module.exports = [nodeTarget, webTarget];
-
+module.exports = [nodeTarget, webTarget]

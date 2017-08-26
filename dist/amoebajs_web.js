@@ -1,5 +1,14 @@
-window["amoeba"] =
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("fs"), require("path"));
+	else if(typeof define === 'function' && define.amd)
+		define(["fs", "path"], factory);
+	else if(typeof exports === 'object')
+		exports["amoeba"] = factory(require("fs"), require("path"));
+	else
+		root["amoeba"] = factory(root["fs"], root["path"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_4__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -4186,13 +4195,13 @@ process.umask = function () {
 /* 3 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = window["fs"]; }());
+module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = window["path"]; }());
+module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
 
 /***/ }),
 /* 5 */
@@ -4306,3 +4315,4 @@ var SVGBox = exports.SVGBox = function () {
 
 /***/ })
 /******/ ]);
+});
