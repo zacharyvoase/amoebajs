@@ -1,7 +1,19 @@
 const path = require('path')
 
 const rules = [
-    { test: /\.bc$/, use: 'llvmbc-wasm-loader' },
+    {
+        test: /\.bc$/,
+        use: {
+            loader: 'llvmbc-wasm-loader',
+            options: {
+                command: [
+                    'em++',
+                    '-s', 'NO_EXIT_RUNTIME=1',
+                    '-s', 'RESERVED_FUNCTION_POINTERS=1',
+                ]
+            }
+        }
+    },
     {
         test: /\.js$/,
         use: {
