@@ -51,7 +51,10 @@ const webTarget = {
     module: {
         rules: rules
     },
-    externals: ['fs', 'path']
+    node: {
+        fs: 'empty',
+        path: 'empty'
+    }
 }
 
 module.exports = [nodeTarget, webTarget]
