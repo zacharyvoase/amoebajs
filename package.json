@@ -15,7 +15,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "generate-export-aliases": "^1.0.0",
-    "llvmbc-wasm-loader": "^0.0.1",
+    "llvmbc-wasm-loader": "^1.0.0",
     "webpack": "^3.5.5"
   },
   "scripts": {
