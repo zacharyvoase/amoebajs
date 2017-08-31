@@ -10,19 +10,12 @@ const rules = [
                     'em++',
                     '-s', 'NO_EXIT_RUNTIME=1',
                     '-s', 'RESERVED_FUNCTION_POINTERS=1',
+                    '--bind'
                 ]
             }
         }
     },
-    {
-        test: /\.js$/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['env']
-            }
-        }
-    }
+    { test: /\.js$/, use: 'babel-loader' }
 ]
 
 const nodeTarget = {

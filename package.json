@@ -14,12 +14,15 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.53.1",
     "generate-export-aliases": "^1.0.0",
     "llvmbc-wasm-loader": "^1.0.0",
     "webpack": "^3.5.5"
   },
   "scripts": {
-    "prepare": "./node_modules/.bin/generate-export-aliases"
+    "prepare": "./node_modules/.bin/generate-export-aliases",
+    "flow": "./node_modules/.bin/flow"
   },
   "config": {
     "exportAliases": {
