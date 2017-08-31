@@ -199,6 +199,7 @@ var Solver = exports.Solver = function () {
         solvers.set(this._solver, this);
         this._vars = new Map();
         this._constraints = new Map();
+        this.setAutoUpdate(true);
     }
 
     _createClass(Solver, [{
