@@ -1,4 +1,6 @@
+const fs = require('fs')
 const path = require('path')
+const webpack = require('webpack')
 
 const rules = [
     {
@@ -18,6 +20,12 @@ const rules = [
     { test: /\.js$/, use: 'babel-loader' }
 ]
 
+const plugins = [
+    new webpack.BannerPlugin(
+        fs.readFileSync('./amoeba-LICENSE', {encoding: 'utf-8'})
+    )
+]
+
 const nodeTarget = {
     target: 'node',
     entry: './lib/index.js',
@@ -29,7 +37,8 @@ const nodeTarget = {
     },
     module: {
         rules: rules
-    }
+    },
+    plugins: plugins
 }
 
 const webTarget = {
@@ -47,7 +56,8 @@ const webTarget = {
     node: {
         fs: 'empty',
         path: 'empty'
-    }
+    },
+    plugins: plugins
 }
 
 module.exports = [nodeTarget, webTarget]
