@@ -1,6 +1,6 @@
 {
   "name": "amoebajs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Zack Voase <zack@meat.io>",
   "description": "A JS/WebAssembly binding for the Amoeba C++ linear constraint solver",
   "homepage": "https://github.com/zacharyvoase/amoebajs",
