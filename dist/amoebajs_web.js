@@ -123,10 +123,6 @@ var _amoebalib = __webpack_require__(2);
 
 var lib = _interopRequireWildcard(_amoebalib);
 
-var _svg = __webpack_require__(4);
-
-var svg = _interopRequireWildcard(_svg);
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4317,116 +4313,6 @@ process.chdir = function (dir) {
 process.umask = function () {
     return 0;
 };
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var SVGBox = exports.SVGBox = function () {
-    function SVGBox(solver) {
-        _classCallCheck(this, SVGBox);
-
-        this.solver = solver;
-
-        this.x = this.left = solver.newVariable();
-        this.y = this.top = solver.newVariable();
-
-        this.width = solver.newVariable();
-        this.height = solver.newVariable();
-
-        this.right = this.x.plus(this.width);
-        this.bottom = this.y.plus(this.height);
-
-        this._constraints = [this.x.mustBeGreaterThanEqual(0).add(), this.y.mustBeGreaterThanEqual(0).add(), this.width.mustBeGreaterThanEqual(0).add(), this.height.mustBeGreaterThanEqual(0).add()];
-    }
-
-    _createClass(SVGBox, [{
-        key: 'initialize',
-        value: function initialize(element) {
-            var bbox = element.getBBox();
-            this.x.suggest(bbox.x);
-            this.y.suggest(bbox.y);
-            this.width.suggest(bbox.width);
-            this.height.suggest(bbox.height);
-            return this;
-        }
-    }, {
-        key: 'fixSize',
-        value: function fixSize(element) {
-            if (typeof this._sizeFixed !== 'undefined') {
-                this._sizeFixed.forEach(function (c) {
-                    return c.remove().free();
-                });
-            }
-            if (element) {
-                var bbox = element.getBBox();
-                this._sizeFixed = [this.width.mustEqual(bbox.width).add(), this.height.mustEqual(bbox.height).add()];
-            }
-            return this;
-        }
-    }, {
-        key: 'free',
-        value: function free() {
-            this._constraints.forEach(function (c) {
-                return c.remove().free();
-            });
-            this.x.free();
-            this.y.free();
-            this.width.free();
-            this.height.free();
-        }
-    }, {
-        key: 'mustBeContainedBy',
-        value: function mustBeContainedBy(other, padding) {
-            if (typeof this._containedBy !== 'undefined') {
-                this._containedBy.forEach(function (c) {
-                    return c.remove().free();
-                });
-            }
-            this._containedBy = [this.x.mustBeGreaterThanEqual(other.x.plus(padding.left)).add(), this.y.mustBeGreaterThanEqual(other.y.plus(padding.top)).add(), this.right.mustBeLessThanEqual(other.right.subtract(padding.right)).add(), this.bottom.mustBeLessThanEqual(other.bottom.subtract(padding.bottom)).add()];
-            return this;
-        }
-    }, {
-        key: 'props',
-        get: function get() {
-            return {
-                x: this.x.value,
-                y: this.y.value,
-                width: this.width.value,
-                height: this.height.value
-            };
-        }
-    }, {
-        key: 'position',
-        get: function get() {
-            return {
-                x: this.x.value,
-                y: this.y.value
-            };
-        }
-    }, {
-        key: 'dimensions',
-        get: function get() {
-            return {
-                width: this.width.value,
-                height: this.height.value
-            };
-        }
-    }]);
-
-    return SVGBox;
-}();
 
 /***/ })
 /******/ ]);
