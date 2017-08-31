@@ -1,7 +1,12 @@
 CXX=em++
 CXXFLAGS=-std=c++11 --bind -Iamoeba -DAM_API='extern __attribute__((used))' -DAM_IMPLEMENTATION -s RESERVED_FUNCTION_POINTERS=1
 
-dist/amoebajs_node.js dist/amoebajs_web.js: lib/amoebalib.bc lib/index.js
+all: dist/amoebajs_node.js
+
+dist/amoebajs_node.js: dist/amoebajs_web.js
+
+dist/amoebajs_web.js: lib/amoebalib.bc lib/index.js
+	npm run flow
 	webpack
 
 lib/amoebalib.bc: lib/amoebalib.cpp amoeba/amoeba.h
@@ -10,4 +15,4 @@ lib/amoebalib.bc: lib/amoebalib.cpp amoeba/amoeba.h
 clean:
 	rm lib/amoebalib.bc dist/amoebajs_node.js dist/amoebajs_web.js
 
-.PHONY: clean
+.PHONY: all clean
