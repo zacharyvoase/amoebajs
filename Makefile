@@ -1,5 +1,5 @@
 CXX=em++
-CXXFLAGS=-std=c++11 --bind -Iamoeba -DAM_API='extern __attribute__((used))' -DAM_IMPLEMENTATION
+CXXFLAGS=-std=c++11 --bind -Iamoeba -DAM_API='extern __attribute__((used))' -DAM_IMPLEMENTATION -s RESERVED_FUNCTION_POINTERS=1
 
 dist/amoebajs_node.js dist/amoebajs_web.js: lib/amoebalib.bc lib/index.js
 	webpack
