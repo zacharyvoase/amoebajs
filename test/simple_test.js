@@ -1,7 +1,7 @@
-amoeba = require('./dist/amoeba_node.js')
+amoeba = require('../dist/amoebajs_node.js')
 
 amoeba.ready.then(() => {
-    let solver = new amoeba.Solver(),
+    let solver = new amoeba.Solver().setAutoUpdate(true),
         v1 = solver.newVariable(),
         v2 = solver.newVariable()
 
